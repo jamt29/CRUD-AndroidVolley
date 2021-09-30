@@ -1,0 +1,2 @@
+rootProject.name = "jamt29-sem9"
+include ':app'
