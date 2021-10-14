@@ -3,6 +3,7 @@ package com.itca.jamt29_sem9;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -52,25 +53,32 @@ public class login extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(context, "" + response, Toast.LENGTH_SHORT).show();
-                try {
-                    JSONObject respuestaJSON = new JSONObject(response.toString());
-                    String id = respuestaJSON.getString("id");
-                    String nombre = respuestaJSON.getString("nombre");
-                    String apellidos = respuestaJSON.getString("apellidos");
-                    String correo = respuestaJSON.getString("correo");
-                    String usuario = respuestaJSON.getString("usuario");
-                    String clave = respuestaJSON.getString("clave");
-                    String tipo = respuestaJSON.getString("tipo");
-                    String estado = respuestaJSON.getString("estado");
-                    String pregunta = respuestaJSON.getString("pregunta");
-                    String respuesta = respuestaJSON.getString("respuesta");
-                    String fecha_registro = respuestaJSON.getString("fecha_registro");
 
-                    Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                if (response.equals(0)) {
+                    Toast.makeText(context, "" + response, Toast.LENGTH_SHORT).show();
+                } else {
+                    try {
+                        JSONObject respuestaJSON = new JSONObject(response.toString());
+                        String id = respuestaJSON.getString("id");
+                        String nombre = respuestaJSON.getString("nombre");
+                        String apellidos = respuestaJSON.getString("apellidos");
+                        String correo = respuestaJSON.getString("correo");
+                        String usuario = respuestaJSON.getString("usuario");
+                        String clave = respuestaJSON.getString("clave");
+                        String tipo = respuestaJSON.getString("tipo");
+                        String estado = respuestaJSON.getString("estado");
+                        String pregunta = respuestaJSON.getString("pregunta");
+                        String respuesta = respuestaJSON.getString("respuesta");
+                        String fecha_registro = respuestaJSON.getString("fecha_registro");
+
+                        Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(login.this, MainActivity.class);
+                        startActivity(i);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -84,6 +92,7 @@ public class login extends AppCompatActivity {
                 parametos.put("usu", user.trim());
                 parametos.put("pas", pass.trim());
                 return parametos;
+
             }
         };
         MySingleton.getInstance(context).addToRequestQueue(request);
