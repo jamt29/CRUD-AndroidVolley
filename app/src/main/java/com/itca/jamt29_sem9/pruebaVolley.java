@@ -85,7 +85,7 @@ public class pruebaVolley extends AppCompatActivity {
     }
 
 
-   private void peticionJson(){
+  /* private void peticionJson(){
        String url = "https://mjgl.com.sv/pruebaVolley/test.php";
       //  String url1 = URL_PRUEBA;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
@@ -104,7 +104,7 @@ public class pruebaVolley extends AppCompatActivity {
                 });
        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
 
-    }
+    } */
     private void recibirJson(){
         String url = "https://mjgl.com.sv/pruebaVolley/test.php";
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -131,7 +131,7 @@ public class pruebaVolley extends AppCompatActivity {
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
   public void onClick(View view) {
-    pruebaVolley();
+    recibirJson();
   }
 
     }

@@ -94,10 +94,10 @@ public class Categorias extends Fragment implements View.OnClickListener{
         et_namecategoria = root.findViewById(R.id.et_namecategoria);
         sp_estado = root.findViewById(R.id.sp_estado);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+       /* ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.estadoCategorias, android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp_estado.setAdapter(adapter);
+        sp_estado.setAdapter(adapter);*/
 
         sp_estado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
