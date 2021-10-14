@@ -1,12 +1,23 @@
 package com.itca.jamt29_sem9;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -20,17 +31,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
 import com.itca.jamt29_sem9.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
-    private TextInputLayout ti_idcategoria, ti_namecategoria;
-    private EditText et_idcategoria, et_namecategoria;
-    private Spinner sp_estado;
-    private Button btnSave, btnNew;
 
-    String datoSelect="";
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +81,16 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
+
+
+
+
 /*
     @Override
     public boolean onSupportNavigateUp() {
