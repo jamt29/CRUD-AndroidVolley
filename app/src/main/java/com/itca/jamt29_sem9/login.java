@@ -17,6 +17,8 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
 public class login extends AppCompatActivity {
     private Button btn_login, olvidatsecontra;
     private EditText et_correo, et_contra;
@@ -30,10 +32,20 @@ public class login extends AppCompatActivity {
         olvidatsecontra = findViewById(R.id.olvidastecontra);
         et_contra = findViewById(R.id.et_contra);
         et_correo = findViewById(R.id.et_correo);
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btn_login(login.this, et_correo.getText().toString(), et_contra.getText().toString());
+            }
+        });
     }
 
     public void registrate(View view) {
     }
+
+
+
 
     public void btn_login(final Context context, final String user, final String pass) {
         String url="https://mjgl.com.sv/ws_2021/login.php";
@@ -63,9 +75,18 @@ public class login extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(context, "Error. Problemas en la conexion al servidor", Toast.LENGTH_SHORT).show();
             }
-        })
+        }) {
+            @Override
+            protected HashMap<String, String> getParams(){
+                HashMap<String, String> parametos = new HashMap<>();
+                parametos.put("usu", user.trim());
+                parametos.put("pas", pass.trim());
+                return parametos;
+            }
+        };
+        MySingleton.getInstance(context).addToRequestQueue(request);
     }
 
     public void olvidastecontra(View view) {

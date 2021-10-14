@@ -32,7 +32,8 @@
             android:hint="Ingrse Su Correo"
             android:layout_marginTop="25dp"
             android:drawableLeft="@drawable/ic_account"
-            android:drawablePadding="15dp"/>
+            android:drawablePadding="15dp"
+            android:inputType="textEmailAddress"/>
         <EditText
             android:id="@+id/et_contra"
             android:layout_width="350dp"
@@ -40,7 +41,8 @@
             android:hint="Ingrese su contraseña"
             android:layout_marginTop="25dp"
             android:drawableLeft="@drawable/ic_key"
-            android:drawablePadding="15dp"/>
+            android:drawablePadding="15dp"
+            android:inputType="textPassword"/>
         <Button
             android:id="@+id/btn_login"
             android:layout_width="150dp"
