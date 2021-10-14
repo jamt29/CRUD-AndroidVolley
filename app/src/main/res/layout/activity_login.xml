@@ -49,7 +49,8 @@
             android:layout_height="match_parent"
             android:text="LOGIN"
             android:layout_marginTop="25dp"
-            android:onClick="btn_login"/>
+            android:onClick="btn_login"
+            tools:ignore="OnClick" />
         <Button
             android:id="@+id/olvidastecontra"
             android:layout_width="wrap_content"
